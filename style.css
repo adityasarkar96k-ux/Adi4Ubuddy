@@ -1,31 +1,18 @@
-/* Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
-:root {
-    --primary-color: #00d2ff;
-    --secondary-color: #928DAB;
-    --text-color: #ffffff;
-    --glass-bg: rgba(255, 255, 255, 0.07);
-    --glass-border: rgba(255, 255, 255, 0.2);
-    --hover-glow: 0 0 25px rgba(0, 210, 255, 0.4);
-}
-
+/* Basic Reset */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    cursor: none; /* Hide Default Cursor */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
     background-color: #000;
-    color: var(--text-color);
-    overflow-x: hidden;
-    min-height: 100vh;
+    color: white;
+    overflow-x: hidden; /* prevents horizontal scroll */
 }
 
-/* --- VIDEO BACKGROUND --- */
+/* --- VIDEO BACKGROUND FIX --- */
 #myVideo {
     position: fixed;
     right: 0;
@@ -42,31 +29,8 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.65); /* Darken video by 65% */
+    background: rgba(0, 0, 0, 0.7); /* Thoda dark kela text disnyasathi */
     z-index: -1;
-    backdrop-filter: blur(3px); /* Slight blur for focus on content */
-}
-
-/* --- CUSTOM CURSOR --- */
-.cursor {
-    width: 8px;
-    height: 8px;
-    background: white;
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-}
-
-.cursor2 {
-    width: 40px;
-    height: 40px;
-    border: 1px solid rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9998;
-    transition: 0.15s ease-out;
 }
 
 /* --- HEADER --- */
@@ -74,61 +38,48 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 15px 5%;
-    background: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(15px);
+    background: rgba(0, 0, 0, 0.8); /* Simple transparent black for speed */
+    padding: 10px 20px;
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    /* gap: 10px; font-weight, font-size, color, text-shadow काढून टाका कारण आता टेक्स्ट नाही */
-}
-
 .logo img {
-    height: 40px; /* तुमच्या गरजेनुसार लोगोची उंची (height) कमी-जास्त करा */
-    width: auto;  /* लोगोचा आकार बिघडू नये म्हणून width auto ठेवा */
+    height: 40px; /* Logo height fix */
+    width: auto;
+    display: block;
 }
 
+/* Social Icons */
 .social-nav {
     display: flex;
-    gap: 25px;
+    gap: 20px;
 }
 
-.social-link {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    text-decoration: none;
-    color: #ddd;
-    font-size: 0.9rem;
-    transition: 0.3s;
+.social-nav a {
+    color: #fff;
+    font-size: 1.2rem;
+    transition: 0.2s;
 }
 
-.social-link i {
-    font-size: 1.1rem;
-}
-
-.social-link:hover {
-    color: var(--primary-color);
-    text-shadow: 0 0 10px var(--primary-color);
+.social-nav a:hover {
+    color: #00d2ff;
 }
 
 /* Search Bar */
 .search-bar {
     display: flex;
     background: rgba(255, 255, 255, 0.1);
-    padding: 8px 15px;
-    border-radius: 30px;
-    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 5px 15px;
 }
 
 .search-bar input {
@@ -136,220 +87,131 @@ header {
     border: none;
     color: white;
     outline: none;
-    width: 140px;
-    font-size: 0.9rem;
+    width: 150px;
 }
 
 .search-bar button {
     background: transparent;
     border: none;
     color: white;
-    font-size: 1rem;
+    cursor: pointer;
 }
 
-/* --- MAIN HERO SECTION --- */
+/* --- HERO SECTION --- */
 .hero {
     text-align: center;
-    padding: 140px 20px 60px;
+    padding: 120px 20px 40px; /* Top padding header sathi */
 }
 
-.main-heading {
-    font-size: 3.5rem;
+.hero h1 {
+    font-size: 2.5rem;
     margin-bottom: 10px;
+    text-transform: uppercase;
     background: linear-gradient(90deg, #fff, #00d2ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-weight: 800;
-    filter: drop-shadow(0 0 15px rgba(0, 210, 255, 0.3));
 }
 
-.sub-text {
-    font-size: 1.2rem;
+.hero p {
     color: #ccc;
-    letter-spacing: 1px;
+    font-size: 1.1rem;
 }
 
-/* --- CATEGORIES LIST --- */
+/* --- CATEGORIES (Responsive) --- */
 .categories-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 20px;
-    padding-bottom: 100px;
+    gap: 15px;
+    padding-bottom: 80px;
+    max-width: 800px;
+    margin: 0 auto; /* Center align */
+    width: 95%; /* Mobile sathi */
 }
 
 .category-card {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 90%;
-    max-width: 800px;
-    height: 90px;
-    background: var(--glass-bg);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--glass-border);
-    padding: 0 30px;
-    border-radius: 16px;
+    width: 100%;
+    background: rgba(25, 25, 25, 0.9); /* Blur kadhun takla speed sathi */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 15px 20px;
+    border-radius: 12px;
     text-decoration: none;
     color: white;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    overflow: hidden;
+    transition: transform 0.2s ease, background 0.2s;
 }
 
-/* Hover Effect */
 .category-card:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: var(--primary-color);
-    transform: scale(1.03);
-    box-shadow: var(--hover-glow);
+    transform: scale(1.02);
+    background: rgba(40, 40, 40, 0.95);
+    border-color: #00d2ff;
 }
 
 .cat-icon {
-    font-size: 2.2rem;
-    color: var(--primary-color);
-    width: 60px;
-    display: flex;
-    justify-content: center;
+    font-size: 1.8rem;
+    color: #00d2ff;
+    margin-right: 20px;
+    width: 40px;
+    text-align: center;
 }
 
 .cat-info {
-    flex-grow: 1;
-    padding-left: 20px;
+    flex: 1;
 }
 
 .cat-info h3 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 600;
 }
 
 .cat-info p {
     font-size: 0.85rem;
     color: #aaa;
-    margin-top: 2px;
 }
 
 .arrow {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255,255,255,0.1);
-    border-radius: 50%;
-    transition: 0.3s;
-}
-
-.category-card:hover .arrow {
-    background: var(--primary-color);
-    color: black;
-    transform: rotate(-45deg); /* Arrow tilt effect */
+    color: #555;
 }
 
 /* --- FOOTER --- */
 footer {
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(20px);
-    padding: 60px 5% 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 40px;
-    margin-bottom: 40px;
-}
-
-.footer-left h2 {
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
-
-.footer-left p {
-    color: #888;
-    max-width: 300px;
-    line-height: 1.6;
-}
-
-.footer-links ul {
-    list-style: none;
-}
-
-.footer-links li {
-    margin-bottom: 12px;
-}
-
-.footer-links a {
-    color: #aaa;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.footer-links a:hover {
-    color: white;
-    padding-left: 5px;
-}
-
-.social-icons {
-    display: flex;
-    gap: 15px;
-    margin-top: 15px;
-}
-
-.social-icons a {
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 50%;
-    color: white;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.social-icons a:hover {
-    background: var(--primary-color);
-    color: black;
-    border-color: var(--primary-color);
-    transform: translateY(-5px);
-}
-
-.footer-bottom {
     text-align: center;
-    border-top: 1px solid rgba(255,255,255,0.05);
-    padding-top: 20px;
-    color: #555;
-    font-size: 0.85rem;
+    padding: 20px;
+    background: #111;
+    color: #666;
+    font-size: 0.9rem;
+    margin-top: 20px;
 }
 
-/* Mobile Responsive */
+/* --- MOBILE RESPONSIVENESS (Auto Adjust) --- */
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
         gap: 15px;
     }
+
+    .logo img {
+        height: 35px; /* Mobile var logo thoda chota */
+    }
     
-    .social-nav span {
-        display: none; /* Hide text, keep icons on mobile */
+    .social-nav {
+        gap: 25px; /* Icons madhe thodi space */
     }
 
-    .main-heading {
-        font-size: 2.2rem;
+    .search-bar {
+        width: 100%; /* Mobile var full width search */
+    }
+    
+    .search-bar input {
+        width: 100%;
+    }
+
+    .hero h1 {
+        font-size: 1.8rem; /* Font size adjustment for mobile */
     }
 
     .category-card {
-        padding: 15px;
-        height: auto;
-        flex-direction: row;
-    }
-    
-    .cat-info h3 {
-        font-size: 1.2rem;
+        padding: 12px 15px; /* Cards padding adjustment */
     }
 }
