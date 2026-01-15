@@ -1,34 +1,32 @@
-/* --- 1. GLOBAL RESET & FONTS --- */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
-
+/* --- 1. GLOBAL RESET & SETTINGS --- */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-    /* Cursor Fix: आता कर्सर दिसेल */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Cursor Fix: PC var mouse disnyasathi he important aahe */
     cursor: auto; 
-    text-decoration: none;
+    text-decoration: none; /* Link underline kadhli */
 }
 
 body {
     background-color: #000;
     color: white;
-    overflow-x: hidden; /* आडवा स्क्रोल बंद */
+    overflow-x: hidden; /* prevents horizontal scroll */
 }
 
 html {
     scroll-behavior: smooth;
 }
 
-/* --- 2. VIDEO BACKGROUND --- */
+/* --- 2. VIDEO BACKGROUND FIX --- */
 #myVideo {
     position: fixed;
     right: 0;
     bottom: 0;
     min-width: 100%;
     min-height: 100%;
-    z-index: -2; /* सर्वात मागे */
+    z-index: -2;
     object-fit: cover;
 }
 
@@ -38,7 +36,7 @@ html {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.75); /* व्हिडिओ थोडा डार्क केला जेणेकरून टेक्स्ट वाचता येईल */
+    background: rgba(0, 0, 0, 0.75); /* Text vachnyasathi thoda dark */
     z-index: -1;
 }
 
@@ -47,24 +45,22 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    padding: 15px 5%;
-    background: rgba(0, 0, 0, 0.85); /* गडद काळा स्पीड वाढवण्यासाठी */
-    backdrop-filter: blur(10px); /* थोडासा ब्लर */
+    background: rgba(0, 0, 0, 0.9); /* Fast load honyasathi plain black transparency */
+    padding: 10px 20px;
     z-index: 1000;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header-container {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
 }
 
-/* Logo Image Styling */
 .logo img {
-    height: 45px; /* लोगोची साईज */
+    height: 40px;
     width: auto;
     display: block;
 }
@@ -76,32 +72,24 @@ header {
 }
 
 .social-nav a {
-    display: flex;
+    display: flex; /* Icon ani text ek line madhe */
     align-items: center;
-    gap: 8px;
-    color: #ccc;
+    gap: 5px;
+    color: #fff;
     font-size: 1rem;
-    transition: 0.3s;
-}
-
-/* Text hide on mobile later */
-.social-nav span {
-    font-size: 0.9rem;
-    font-weight: 500;
+    transition: 0.2s;
 }
 
 .social-nav a:hover {
-    color: #00d2ff; /* Neon Blue Hover */
-    transform: translateY(-2px);
+    color: #00d2ff;
 }
 
 /* Search Bar */
 .search-bar {
     display: flex;
     background: rgba(255, 255, 255, 0.1);
-    padding: 8px 15px;
-    border-radius: 25px;
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    padding: 5px 15px;
 }
 
 .search-bar input {
@@ -109,8 +97,7 @@ header {
     border: none;
     color: white;
     outline: none;
-    width: 140px;
-    font-size: 0.9rem;
+    width: 150px;
 }
 
 .search-bar button {
@@ -123,83 +110,78 @@ header {
 /* --- 4. HERO SECTION --- */
 .hero {
     text-align: center;
-    padding: 140px 20px 50px;
+    padding: 130px 20px 40px; /* Header chya khali space */
 }
 
-.main-heading {
-    font-size: 2.8rem;
-    font-weight: 700;
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
     text-transform: uppercase;
-    background: linear-gradient(to right, #ffffff, #00d2ff);
+    background: linear-gradient(90deg, #fff, #00d2ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
-    letter-spacing: 1px;
 }
 
-.sub-text {
-    color: #bbb;
+.hero p {
+    color: #ccc;
     font-size: 1.1rem;
 }
 
-/* --- 5. CATEGORIES LIST (Cards) --- */
+/* --- 5. CATEGORIES LIST --- */
 .categories-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px;
     padding-bottom: 80px;
-    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    width: 95%;
 }
 
 .category-card {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 90%;
-    max-width: 750px;
-    background: rgba(30, 30, 30, 0.6); /* हलका पारदर्शक */
+    width: 100%;
+    /* Lag kami karnyasathi Blur Effect kadhun sadha color thevla */
+    background: rgba(20, 20, 20, 0.95); 
     border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 18px 25px;
+    padding: 15px 20px;
     border-radius: 12px;
     color: white;
-    transition: all 0.3s ease-in-out; /* Smooth transition */
+    transition: transform 0.2s ease, border-color 0.2s;
 }
 
-/* Hover Effect for PC */
 .category-card:hover {
-    background: rgba(50, 50, 50, 0.8);
-    transform: scale(1.02); /* थोडा झूम */
+    transform: scale(1.02); /* Thoda Zoom effect */
     border-color: #00d2ff;
-    box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+    background: rgba(40, 40, 40, 1);
 }
 
 .cat-icon {
     font-size: 1.8rem;
     color: #00d2ff;
-    width: 50px;
+    margin-right: 20px;
+    width: 40px;
     text-align: center;
 }
 
 .cat-info {
-    flex-grow: 1;
-    padding-left: 15px;
+    flex: 1;
 }
 
 .cat-info h3 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 600;
 }
 
 .cat-info p {
     font-size: 0.85rem;
     color: #aaa;
-    margin-top: 2px;
 }
 
 .arrow {
-    color: #666;
-    font-size: 1rem;
+    color: #555;
     transition: 0.3s;
 }
 
@@ -208,11 +190,13 @@ header {
     transform: translateX(5px);
 }
 
-/* --- 6. FOOTER --- */
+/* --- 6. FOOTER (UPDATED) --- */
+/* HTML madhe dila aahe tya pramane Footer Styling */
 footer {
     background: #080808;
-    padding: 50px 5% 20px;
+    padding: 40px 5% 20px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: 30px;
 }
 
 .footer-content {
@@ -222,17 +206,20 @@ footer {
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto 30px;
+    text-align: left;
 }
 
 .footer-left h2 {
     color: #00d2ff;
     margin-bottom: 10px;
+    font-size: 1.5rem;
 }
 
 .footer-left p {
     color: #777;
     max-width: 300px;
     line-height: 1.5;
+    font-size: 0.9rem;
 }
 
 .footer-links ul {
@@ -245,6 +232,7 @@ footer {
 
 .footer-links a {
     color: #aaa;
+    font-size: 0.9rem;
     transition: 0.3s;
 }
 
@@ -261,7 +249,7 @@ footer {
 
 .social-icons a {
     color: white;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     transition: 0.3s;
 }
 
@@ -278,22 +266,28 @@ footer {
     font-size: 0.85rem;
 }
 
-/* --- 7. MOBILE RESPONSIVENESS (महत्त्वाचे) --- */
+/* --- 7. MOBILE RESPONSIVENESS (Auto Adjust) --- */
 @media (max-width: 768px) {
-    
-    /* Header Stack: Logo var, Socials khali */
     .header-container {
         flex-direction: column;
         gap: 15px;
     }
 
-    /* Text nav madhun kadhun takaycha mobile var */
+    /* Mobile var Social Icon chya pudhcha Text (eg. YouTube) lapavla */
     .social-nav span {
         display: none;
     }
 
     .social-nav a {
-        font-size: 1.3rem; /* Icons thode mothe */
+        font-size: 1.4rem; /* Icons thode mothe */
+    }
+
+    .social-nav {
+        gap: 25px;
+    }
+
+    .logo img {
+        height: 35px;
     }
 
     .search-bar {
@@ -304,26 +298,24 @@ footer {
         width: 100%;
     }
 
-    /* Hero Text Small */
-    .main-heading {
-        font-size: 2rem;
+    .hero h1 {
+        font-size: 1.8rem;
     }
 
-    /* Cards Adjustment */
     .category-card {
-        padding: 15px;
-        width: 95%;
+        padding: 12px 15px;
     }
-
-    .cat-info h3 {
-        font-size: 1.1rem;
-    }
-
+    
+    /* Footer Mobile styling */
     .footer-content {
         flex-direction: column;
         text-align: center;
     }
-    
+
+    .footer-left p, .footer-left, .footer-links {
+        margin: 0 auto;
+    }
+
     .social-icons {
         justify-content: center;
     }
