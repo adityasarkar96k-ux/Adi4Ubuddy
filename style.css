@@ -1,18 +1,31 @@
-/* Basic Reset */
+/* Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary-color: #00d2ff;
+    --secondary-color: #928DAB;
+    --text-color: #ffffff;
+    --glass-bg: rgba(255, 255, 255, 0.07);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --hover-glow: 0 0 25px rgba(0, 210, 255, 0.4);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Poppins', sans-serif;
+    cursor: auto; /* Fixed: Cursor visible on PC */
 }
 
 body {
     background-color: #000;
-    color: white;
-    overflow-x: hidden; /* prevents horizontal scroll */
+    color: var(--text-color);
+    overflow-x: hidden;
+    min-height: 100vh;
 }
 
-/* --- VIDEO BACKGROUND FIX --- */
+/* --- VIDEO BACKGROUND --- */
 #myVideo {
     position: fixed;
     right: 0;
@@ -29,8 +42,9 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.7); /* Thoda dark kela text disnyasathi */
+    background: rgba(0, 0, 0, 0.7); /* Darker overlay for better text visibility */
     z-index: -1;
+    backdrop-filter: blur(3px);
 }
 
 /* --- HEADER --- */
@@ -38,48 +52,59 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.8); /* Simple transparent black for speed */
-    padding: 10px 20px;
+    padding: 15px 5%;
+    background: rgba(0, 0, 0, 0.6); /* Slightly darker header */
+    backdrop-filter: blur(15px);
     z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .header-container {
-    max-width: 1200px;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .logo img {
-    height: 40px; /* Logo height fix */
+    height: 40px;
     width: auto;
     display: block;
 }
 
-/* Social Icons */
 .social-nav {
     display: flex;
     gap: 20px;
 }
 
 .social-nav a {
-    color: #fff;
-    font-size: 1.2rem;
-    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #ddd;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.social-nav span {
+    font-weight: 500;
 }
 
 .social-nav a:hover {
-    color: #00d2ff;
+    color: var(--primary-color);
+    text-shadow: 0 0 10px var(--primary-color);
+    transform: translateY(-2px);
 }
 
 /* Search Bar */
 .search-bar {
     display: flex;
     background: rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
-    padding: 5px 15px;
+    padding: 8px 15px;
+    border-radius: 30px;
+    border: 1px solid var(--glass-border);
 }
 
 .search-bar input {
@@ -87,82 +112,94 @@ header {
     border: none;
     color: white;
     outline: none;
-    width: 150px;
+    width: 140px;
+    font-size: 0.9rem;
 }
 
 .search-bar button {
     background: transparent;
     border: none;
     color: white;
+    font-size: 1rem;
     cursor: pointer;
 }
 
-/* --- HERO SECTION --- */
+/* --- MAIN HERO SECTION --- */
 .hero {
     text-align: center;
-    padding: 120px 20px 40px; /* Top padding header sathi */
+    padding: 140px 20px 60px;
 }
 
-.hero h1 {
-    font-size: 2.5rem;
+.main-heading {
+    font-size: 3rem;
     margin-bottom: 10px;
-    text-transform: uppercase;
     background: linear-gradient(90deg, #fff, #00d2ff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 800;
+    filter: drop-shadow(0 0 15px rgba(0, 210, 255, 0.3));
 }
 
-.hero p {
+.sub-text {
+    font-size: 1.2rem;
     color: #ccc;
-    font-size: 1.1rem;
+    letter-spacing: 1px;
 }
 
-/* --- CATEGORIES (Responsive) --- */
+/* --- CATEGORIES LIST --- */
 .categories-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
-    padding-bottom: 80px;
-    max-width: 800px;
-    margin: 0 auto; /* Center align */
-    width: 95%; /* Mobile sathi */
+    gap: 20px;
+    padding-bottom: 100px;
+    width: 100%;
 }
 
 .category-card {
     display: flex;
     align-items: center;
-    width: 100%;
-    background: rgba(25, 25, 25, 0.9); /* Blur kadhun takla speed sathi */
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 15px 20px;
-    border-radius: 12px;
+    justify-content: space-between;
+    width: 90%;
+    max-width: 800px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    padding: 15px 30px;
+    border-radius: 16px;
     text-decoration: none;
     color: white;
-    transition: transform 0.2s ease, background 0.2s;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
 }
 
 .category-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--primary-color);
     transform: scale(1.02);
-    background: rgba(40, 40, 40, 0.95);
-    border-color: #00d2ff;
+    box-shadow: var(--hover-glow);
 }
 
 .cat-icon {
-    font-size: 1.8rem;
-    color: #00d2ff;
-    margin-right: 20px;
-    width: 40px;
-    text-align: center;
+    font-size: 2rem;
+    color: var(--primary-color);
+    width: 50px;
+    display: flex;
+    justify-content: center;
 }
 
 .cat-info {
-    flex: 1;
+    flex-grow: 1;
+    padding-left: 20px;
 }
 
 .cat-info h3 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-weight: 600;
+    margin-bottom: 5px;
 }
 
 .cat-info p {
@@ -171,47 +208,144 @@ header {
 }
 
 .arrow {
-    color: #555;
+    font-size: 1.2rem;
+    color: #ccc;
+    transition: 0.3s;
+}
+
+.category-card:hover .arrow {
+    color: var(--primary-color);
+    transform: translateX(5px);
 }
 
 /* --- FOOTER --- */
 footer {
-    text-align: center;
-    padding: 20px;
-    background: #111;
-    color: #666;
-    font-size: 0.9rem;
-    margin-top: 20px;
+    background: #080808;
+    backdrop-filter: blur(20px);
+    padding: 50px 5% 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: auto;
 }
 
-/* --- MOBILE RESPONSIVENESS (Auto Adjust) --- */
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+}
+
+.footer-left h2 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.footer-left p {
+    color: #888;
+    max-width: 300px;
+    line-height: 1.6;
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #aaa;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.footer-links a:hover {
+    color: white;
+    padding-left: 5px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 50%;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.social-icons a:hover {
+    background: var(--primary-color);
+    color: black;
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    padding-top: 20px;
+    color: #555;
+    font-size: 0.85rem;
+}
+
+/* --- MOBILE RESPONSIVE --- */
 @media (max-width: 768px) {
     .header-container {
         flex-direction: column;
         gap: 15px;
     }
-
+    
     .logo img {
-        height: 35px; /* Mobile var logo thoda chota */
+        height: 35px;
+    }
+
+    .social-nav span {
+        display: none; /* Hide social text on mobile */
     }
     
-    .social-nav {
-        gap: 25px; /* Icons madhe thodi space */
+    .social-nav a {
+        font-size: 1.2rem;
     }
 
     .search-bar {
-        width: 100%; /* Mobile var full width search */
+        width: 100%;
     }
     
     .search-bar input {
         width: 100%;
     }
 
-    .hero h1 {
-        font-size: 1.8rem; /* Font size adjustment for mobile */
+    .main-heading {
+        font-size: 2rem;
     }
 
     .category-card {
-        padding: 12px 15px; /* Cards padding adjustment */
+        padding: 15px;
+        flex-direction: row; /* Ensure items stay in row */
+    }
+    
+    .cat-info h3 {
+        font-size: 1.1rem;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .social-icons {
+        justify-content: center;
     }
 }
